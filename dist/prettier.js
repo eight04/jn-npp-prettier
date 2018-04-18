@@ -1,3 +1,3 @@
-// debugger;
+debugger;
 
-// require("includes/prettier/prettier-core.js");
+require("includes/prettier/prettier-core.js");

@@ -4,9 +4,14 @@
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-plugin-external-helpers": "^6.22.0",
+    "babel-plugin-transform-es3-member-expression-literals": "^6.22.0",
+    "babel-plugin-transform-es3-property-literals": "^6.22.0",
+    "babel-plugin-transform-es5-property-mutators": "^6.24.1",
     "babel-preset-env": "^1.6.1",
     "babelify": "^8.0.0",
+    "babelify-external-helpers": "^1.1.0",
     "browserify": "^16.2.0",
+    "browserify-tree": "0.0.6",
     "es3ify": "^0.2.2",
     "eslint": "^4.19.1",
     "inline-js": "^0.6.1",
@@ -17,7 +22,7 @@
   },
   "scripts": {
     "test": "eslint src/*.js",
-    "build-core": "browserify bundle/prettier-core.js -o dist/prettier/prettier-core.js --bare --global-transform babelify",
+    "build-core": "node build-core.js",
     "build-src": "inlinejs -o dist/emmet.js src/emmet.js && n-copy -s src/emmet ** -d dist/emmet",
     "build-asset": "copy /y node_modules\\emmet\\lib\\snippets.json dist\\emmet\\system-snippets.json && copy /y node_modules\\caniuse-db\\data.json dist\\emmet\\caniuse.json",
     "build-lib": "n-copy -s lib ** -d dist/emmet",

@@ -1,4 +1,5 @@
 {
+  "compact": false,
 	"presets": [
 		["env", {
 			"targets": {
@@ -10,5 +11,10 @@
 			"modules": false
 		}]
 	],
-	"plugins": ["external-helpers"]
+	"plugins": [
+    "external-helpers",
+    "transform-es3-property-literals",
+    "transform-es3-member-expression-literals",
+    "transform-es5-property-mutators"
+  ]
 }
