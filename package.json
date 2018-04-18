@@ -1,0 +1,29 @@
+{
+  "name": "jn-npp-prettier",
+  "version": "0.0.0",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-preset-env": "^1.6.1",
+    "babelify": "^8.0.0",
+    "browserify": "^16.2.0",
+    "es3ify": "^0.2.2",
+    "eslint": "^4.19.1",
+    "inline-js": "^0.6.1",
+    "npm-build-tools": "^2.2.5"
+  },
+  "dependencies": {
+    "prettier": "^1.12.1"
+  },
+  "scripts": {
+    "test": "eslint src/*.js",
+    "build-core": "browserify bundle/prettier-core.js -o dist/prettier/prettier-core.js --bare --global-transform babelify",
+    "build-src": "inlinejs -o dist/emmet.js src/emmet.js && n-copy -s src/emmet ** -d dist/emmet",
+    "build-asset": "copy /y node_modules\\emmet\\lib\\snippets.json dist\\emmet\\system-snippets.json && copy /y node_modules\\caniuse-db\\data.json dist\\emmet\\caniuse.json",
+    "build-lib": "n-copy -s lib ** -d dist/emmet",
+    "build": "n-clean dist && npm run build-src && npm run build-asset && npm run build-lib && npm run build-core",
+    "preversion": "npm test",
+    "version": "npm run build && git add .",
+    "postversion": "git push --follow-tags"
+  }
+}
